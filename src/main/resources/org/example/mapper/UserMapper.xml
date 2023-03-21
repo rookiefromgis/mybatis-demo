@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:名称空间-->
+<mapper namespace="org.example.mapper.UserMapper">
+    <select id="selectAll" resultType="user">
+        select * from tb_user;
+    </select>
+<!--
+    *参数占位符：
+    1.#{}：会将其替换为？，为了防止SQL注入
+    2.${}:拼sql，会存在sql注入问题
+    3.使用时机：
+        参数传递，都使用#{}
+
+-->
+<!--    <select id="selectById" resultType="user">-->
+<!--        select *-->
+<!--        from tb_user where id =#{id};-->
+<!--    </select>-->
+
+    <select id="select" resultType="user">
+        select *
+        from tb_user
+        where
+            username = #{username}
+        and password = #{password}
+    </select>
+
+
+</mapper>
